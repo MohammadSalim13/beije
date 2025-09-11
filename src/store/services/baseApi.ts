@@ -1,8 +1,9 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
+
 import axios from '@/@utilities/axios-instance';
 import STORAGE_KEYS from '@/@utilities/storage-keys';
-import { AxiosError } from 'axios';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // use directly axios instance for complex api
 export const axiosBaseQuery =
@@ -27,7 +28,7 @@ export const axiosBaseQuery =
           error: { status: error.response?.status, data: error.response?.data },
         };
       }
-      throw error
+      throw error;
     }
   };
 

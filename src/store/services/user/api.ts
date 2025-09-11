@@ -1,6 +1,7 @@
 import { baseApi } from '@/store/services/baseApi';
-import { SignInBody, User } from '@/store/services/user/type';
 import { GET_USER_PROFILE, POST_USER_SIGN_IN } from '@/store/services/routes';
+import { SignInBody, User } from '@/store/services/user/type';
+
 import { CredentialModel } from '@/models/credential.model';
 
 export const userApi = baseApi.injectEndpoints({

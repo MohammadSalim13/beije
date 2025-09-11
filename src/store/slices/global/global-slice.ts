@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { GlobalState } from '@/store/slices/global/type';
 
 const initialState: GlobalState = {
-  user: null
+  user: null,
 };
 
 const globalSlice = createSlice({
@@ -12,9 +13,8 @@ const globalSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    },
   },
-)
+});
 
 export const { setUser } = globalSlice.actions;
 export default globalSlice.reducer;
