@@ -1,5 +1,5 @@
-import { userModel } from '@/models/user.model';
+import { UserModel } from '@/models/user.model';
 
 export interface GlobalState {
-  user: userModel | null;
+  user: UserModel | null;
 }
