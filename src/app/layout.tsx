@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/globals.css';
 
-import ReduxProvider from '@/components/layout/redux-provider';
+import DefaultLayout from '@/components/layout';
 
 export const metadata: Metadata = {
   title: 'Task for Beije',
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <DefaultLayout>{children}</DefaultLayout>
       </body>
     </html>
   );
