@@ -16,8 +16,6 @@ export const StoreProvider = ({ children }: Props) => {
 
   if (!storeRef.current) {
     storeRef.current = makeStore();
-    // eslint-disable-next-line no-console
-    console.log('salim Created new Redux store instance');
   }
 
   useEffect(() => {
