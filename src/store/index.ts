@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { userApi } from './services/user/api';
+import { baseApi } from './services/baseApi';
 import globalSliceReducer from './slices/global/global-slice';
 
 export const store = configureStore({
   reducer: {
-    counter: globalSliceReducer,
-    [userApi.reducerPath]: userApi.reducer,
+    global: globalSliceReducer,
+    [baseApi.reducerPath]: baseApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

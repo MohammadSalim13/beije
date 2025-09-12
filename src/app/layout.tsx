@@ -1,13 +1,9 @@
-import type { Metadata } from 'next';
+'use client';
 
 import '@/styles/globals.css';
 
 import DefaultLayout from '@/components/layout';
-
-export const metadata: Metadata = {
-  title: 'Task for Beije',
-  description: 'Developed by Salim',
-};
+import ReduxProvider from '@/components/layout/redux-provider';
 
 export default function RootLayout({
   children,
@@ -16,9 +12,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>
-        <DefaultLayout>{children}</DefaultLayout>
-      </body>
+      <ReduxProvider>
+        <body>
+          <DefaultLayout>{children}</DefaultLayout>
+        </body>
+      </ReduxProvider>
     </html>
   );
 }
