@@ -1,7 +1,19 @@
 import { Box } from '@mui/material';
 
+import Logo from '@/components/layout/header/logo';
+import Navbar from '@/components/layout/header/nav';
+import Profile from '@/components/layout/header/profile';
+
 export default function Header() {
   return (
-    <Box className='flex h-16 items-center justify-center bg-blue-500 text-white'>Header</Box>
+    <Box className='relative flex h-[94px] items-center justify-center'>
+      <Box className='mx-4 flex w-full max-w-[1152px] items-center justify-between'>
+        <Box className='flex items-center gap-6'>
+          <Logo />
+          <Navbar />
+        </Box>
+        <Profile />
+      </Box>
+    </Box>
   );
 }

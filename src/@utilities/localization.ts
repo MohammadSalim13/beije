@@ -1,5 +1,7 @@
 export const localization = {
   beije: 'Beije',
+  user: 'kullanıcı',
+  shoopingCart: 'alışveriş sepeti',
   menuItems: {
     allProducts: 'Tüm Ürünler',
     aboutUs: 'Biz Kimiz?',
