@@ -1,3 +1,4 @@
+export const LOGIN = '/login';
 export const PRODUCTS = '/products';
 export const ABOUT = '/about';
 export const DONATION_CULTURE = '/donation-culture';

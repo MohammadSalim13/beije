@@ -22,6 +22,7 @@ export default function Nav() {
       return (open: boolean) => setIsOpen(open);
     }
     // dou to we do not have other nav drawer contents, return empty function instead we can handle drawer items
+    // drawer content can be managed in a custom hook
     return () => {};
   };
   return (
