@@ -1,7 +1,7 @@
 export const ProductType = {
   Menstrual: 'Menstrual',
   Other: 'Other',
-};
+} as const;
 
 export interface SubProduct {
   _id: string;

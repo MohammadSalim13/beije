@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { baseApi } from '@/store/services/baseApi';
-import globalSliceReducer from '@/store/slices/global/global-slice';
+import globalSliceReducer from '@/store/slices/global';
+import toastSliceReducer from '@/store/slices/toast';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       global: globalSliceReducer,
+      toast: toastSliceReducer,
       [baseApi.reducerPath]: baseApi.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
