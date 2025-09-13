@@ -7,11 +7,11 @@ import { localization } from '@/@utilities/localization';
 const { footer: footerLocalization } = localization;
 export default function OtherLinks() {
   return (
-    <Box className='max-w-large flex w-full justify-between py-8'>
+    <Box className='max-w-large flex w-full flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:gap-0 md:px-0'>
       <Typography className='text-[#FFFFFF99]'>{footerLocalization.rights}</Typography>
-      <Box className='flex gap-6'>
+      <Box className='flex flex-col gap-2 md:flex-row md:gap-6'>
         {otherLinks.map((link, index) => (
-          <Typography key={index} className='text-[#FFFFFF99]'>
+          <Typography key={index} className='text-center text-[#FFFFFF99]'>
             {link}
           </Typography>
         ))}

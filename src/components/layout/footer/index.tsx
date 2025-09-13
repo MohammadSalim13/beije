@@ -12,7 +12,7 @@ import footerHead from '~/images/footer-head.png';
 
 export default function Footer() {
   return (
-    <>
+    <Box className='overflow-hidden'>
       <Image
         src={footerHead}
         width={1920}
@@ -20,14 +20,14 @@ export default function Footer() {
         alt={localization.wave}
         className='min-w-large w-screen object-cover'
       />
-      <Box className='flex flex-col items-center justify-center bg-[#262626] py-20 text-white'>
-        <Box className='max-w-large flex gap-8 border-b border-[#FFFFFF99] pb-16'>
+      <Box className='flex flex-col items-center justify-center bg-[#262626] py-8 text-white md:py-20'>
+        <Box className='max-w-large flex flex-col gap-8 border-b border-[#FFFFFF99] pb-16 md:flex-row'>
           <ContactUs />
           <Links />
         </Box>
         <OtherLinks />
         <Payments />
       </Box>
-    </>
+    </Box>
   );
 }

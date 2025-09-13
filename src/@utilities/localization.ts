@@ -42,7 +42,7 @@ export const localization = {
     policy: 'Gizlilik Politikası',
     cookiePolicy: 'Çerez Politikası',
     test: 'Test Sonuçları',
-    rights: 'footerLocalization',
+    rights: '2022 beije. Tüm hakları saklıdır.',
     english: 'EN',
     turkish: 'TR',
   },

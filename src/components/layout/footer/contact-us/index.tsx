@@ -5,7 +5,7 @@ import { localization } from '@/@utilities/localization';
 const { footer: footerLocalization } = localization;
 export default function ContactUs() {
   return (
-    <Box className='flex w-1/2 grow flex-col gap-6'>
+    <Box className='flex grow flex-col gap-6 px-4 md:mx-0 md:w-1/2'>
       <Typography className='font-bold'>{localization.beije}.</Typography>
       <Box>
         <Typography className='text-[#FFFFFF99]'>{footerLocalization.keepInTouch}</Typography>

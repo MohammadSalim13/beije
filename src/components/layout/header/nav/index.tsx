@@ -26,7 +26,7 @@ export default function Nav() {
   };
   return (
     <>
-      <Box className='flex w-fit items-center justify-center gap-8'>
+      <Box className='hidden w-fit items-center justify-center gap-8 md:flex'>
         {HEADER_NAV_ITEMS.map((item, index) => (
           <Item key={item.label} {...item} toggleDrawer={toggleDrawer(index)} />
         ))}
