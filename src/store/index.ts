@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { baseApi } from './services/baseApi';
-import globalSliceReducer from './slices/global/global-slice';
+import { baseApi } from '@/store/services/baseApi';
+import globalSliceReducer from '@/store/slices/global/global-slice';
 
 export const makeStore = () => {
   return configureStore({

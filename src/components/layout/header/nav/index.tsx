@@ -14,17 +14,21 @@ import { localization } from '@/@utilities/localization';
 export default function Nav() {
   const { data } = useGetProductsAndPacketsQuery();
   const [isOpen, setIsOpen] = useState(false);
-  const toggleDrawer = (open: boolean) => {
+  const toggleDrawer = (index: number) => {
     // hear we can set the drawer content based on the item hovered
     // we can memoize the content if needed
     // i don't think it's needed now as the content is for 1 item only so i didn't implement it
-    setIsOpen(open);
+    if (index === 0) {
+      return (open: boolean) => setIsOpen(open);
+    }
+    // dou to we do not have other nav drawer contents, return empty function instead we can handle drawer items
+    return () => {};
   };
   return (
     <>
       <Box className='flex w-fit items-center justify-center gap-8'>
-        {HEADER_NAV_ITEMS.map((item) => (
-          <Item key={item.label} {...item} toggleDrawer={toggleDrawer} />
+        {HEADER_NAV_ITEMS.map((item, index) => (
+          <Item key={item.label} {...item} toggleDrawer={toggleDrawer(index)} />
         ))}
       </Box>
       <SwipeableDrawer
