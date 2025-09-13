@@ -1,5 +1,12 @@
 export interface User {
-  id: number;
+  _id: string;
+  profileInfo: {
+    firstName: string;
+    lastName: string;
+    birthDate: string;
+    email: string;
+    passwordHash: string;
+  };
 }
 export interface SignInBody {
   email: string;

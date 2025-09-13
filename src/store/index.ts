@@ -1,15 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { userApi } from './services/user/api';
-import globalSliceReducer from './slices/global/global-slice';
+import { baseApi } from '@/store/services/baseApi';
+import globalSliceReducer from '@/store/slices/global';
+import toastSliceReducer from '@/store/slices/toast';
 
-export const store = configureStore({
-  reducer: {
-    counter: globalSliceReducer,
-    [userApi.reducerPath]: userApi.reducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware),
-});
+export const makeStore = () => {
+  return configureStore({
+    reducer: {
+      global: globalSliceReducer,
+      toast: toastSliceReducer,
+      [baseApi.reducerPath]: baseApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
+  });
+};
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];

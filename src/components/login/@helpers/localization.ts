@@ -1,0 +1,17 @@
+export const loginLocalization = {
+  hello: 'Merhaba',
+  welcome: "beije'e hoş geldin!",
+  login: 'Giriş Yap',
+  signup: 'Üye Ol',
+  googleLogin: 'Google ile Giriş Yap',
+  facebookLogin: 'Facebook ile Giriş Yap',
+  emailLabel: 'E-mail adresin',
+  passwordLabel: 'Şifren',
+  forgetPassword: 'Şifremi Unuttum',
+  validEmail: 'Geçerli bir e-posta girin',
+  requiredEmail: 'E-posta gereklidir',
+  requiredPassword: 'Şifre gerekli',
+  wrongPassword: 'e-posta veya şifre yanlış',
+  successfulLogin: 'başarıyla giriş yapıldı',
+  loggedInAs: (name: string) => `${name} olarak giriş yaptınız`,
+};
