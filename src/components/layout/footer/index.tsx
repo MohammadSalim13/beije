@@ -12,7 +12,7 @@ import footerHead from '~/images/footer-head.png';
 
 export default function Footer() {
   return (
-    <Box className='overflow-hidden'>
+    <Box className='-mt-6 overflow-hidden'>
       <Image
         src={footerHead}
         width={1920}
