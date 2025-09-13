@@ -2,6 +2,10 @@ export const localization = {
   beije: 'Beije',
   user: 'kullanıcı',
   shoopingCart: 'alışveriş sepeti',
+  continue: 'devam et',
+  products: 'Ürünler',
+  packets: 'Paketler',
+  allPackets: 'Tüm Paketler',
   menuItems: {
     allProducts: 'Tüm Ürünler',
     aboutUs: 'Biz Kimiz?',

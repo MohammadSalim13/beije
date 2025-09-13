@@ -1,4 +1,7 @@
-export type ProductType = 'Menstrual' | 'Other';
+export const ProductType = {
+  Menstrual: 'Menstrual',
+  Other: 'Other',
+};
 
 export interface SubProduct {
   _id: string;
@@ -10,7 +13,7 @@ export interface Product {
   _id: string;
   title: string;
   image: string;
-  type: ProductType;
+  type: keyof typeof ProductType;
   subProducts: SubProduct[];
 }
 

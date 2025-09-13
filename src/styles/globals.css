@@ -5,11 +5,12 @@
   --foreground: #222;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --spacing-large: 1152px;
 }
 
 body {

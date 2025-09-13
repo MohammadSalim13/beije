@@ -1,32 +1,37 @@
 'use client';
 import { Box, SwipeableDrawer } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
+import ProductCard from '@/components/@shared/product-card';
+import ProductContainer from '@/components/@shared/product-container';
 import { HEADER_NAV_ITEMS } from '@/components/layout/@helpers/constants';
 import Item from '@/components/layout/header/nav/item';
 
-import { RootState } from '@/store';
 import { useGetProductsAndPacketsQuery } from '@/store/services/products/api';
 
+import { localization } from '@/@utilities/localization';
+
 export default function Nav() {
-  const user = useSelector((state: RootState) => state.global.user);
-  const { data, isLoading } = useGetProductsAndPacketsQuery();
+  const { data } = useGetProductsAndPacketsQuery();
   const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {
-    console.log('salim data', data, user, isLoading);
-  }, [data]);
+  const toggleDrawer = (open: boolean) => {
+    // hear we can set the drawer content based on the item hovered
+    // we can memoize the content if needed
+    // i don't think it's needed now as the content is for 1 item only so i didn't implement it
+    setIsOpen(open);
+  };
   return (
     <>
       <Box className='flex w-fit items-center justify-center gap-8'>
         {HEADER_NAV_ITEMS.map((item) => (
-          <Item key={item.label} {...item} toggleDrawer={setIsOpen} />
+          <Item key={item.label} {...item} toggleDrawer={toggleDrawer} />
         ))}
       </Box>
       <SwipeableDrawer
         anchor='top'
+        className='bg-transparent px-4'
         open={isOpen}
-        className='bg-transparent'
+        ModalProps={{ keepMounted: true }}
         onClose={() => setIsOpen(false)}
         onOpen={() => setIsOpen(true)}
         slotProps={{
@@ -49,7 +54,17 @@ export default function Nav() {
           },
         }}
       >
-        <Box className='top-9 z-10 h-120 bg-red-500'>some content</Box>
+        <Box className='max-w-large mx-auto flex min-h-40 w-full flex-col gap-10 pb-16'>
+          <ProductContainer title={localization.products}>
+            {data?.products.map((product) => <ProductCard key={product._id} {...product} />)}
+          </ProductContainer>
+          <ProductContainer
+            title={localization.packets}
+            continueLabel={localization.allPackets}
+          >
+            {data?.packets.map((packet) => <ProductCard key={packet._id} {...packet} />)}
+          </ProductContainer>
+        </Box>
       </SwipeableDrawer>
     </>
   );
