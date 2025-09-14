@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { loginLocalization } from '@/components/login/@helpers/localization';
+import { loginLocalization } from '@/components/[login]/@helpers/localization';
 
 import facebook from '~/icon/facebook-colored.svg';
 import google from '~/icon/google-colored.svg';

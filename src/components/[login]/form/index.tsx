@@ -3,10 +3,10 @@ import { Box, Button, Divider, Typography } from '@mui/material';
 import { Form as FormikForm, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import { LOGIN_VALIDATION_SCHEMA } from '@/components/login/@helpers/constant';
-import { loginLocalization } from '@/components/login/@helpers/localization';
-import Inputs from '@/components/login/form/inputs';
-import SSO from '@/components/login/form/sso';
+import { LOGIN_VALIDATION_SCHEMA } from '@/components/[login]/@helpers/constant';
+import { loginLocalization } from '@/components/[login]/@helpers/localization';
+import Inputs from '@/components/[login]/form/inputs';
+import SSO from '@/components/[login]/form/sso';
 
 import { AppDispatch } from '@/store';
 import { useGetUserProfileQuery, usePostUserLoginMutation } from '@/store/services/user/api';

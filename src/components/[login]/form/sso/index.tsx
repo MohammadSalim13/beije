@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { SSO_LIST } from '@/components/login/@helpers/constant';
-import { loginLocalization } from '@/components/login/@helpers/localization';
+import { SSO_LIST } from '@/components/[login]/@helpers/constant';
+import { loginLocalization } from '@/components/[login]/@helpers/localization';
 
 export default function SSO() {
   return (
