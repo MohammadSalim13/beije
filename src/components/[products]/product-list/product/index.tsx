@@ -49,3 +49,5 @@ export default function Product({ index, title, subProducts }: Props) {
     </Box>
   );
 }
+
+// Icons are ignored here because there are many variants;
