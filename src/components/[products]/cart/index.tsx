@@ -37,7 +37,13 @@ export default function Cart() {
       const response = await postVerifyPrice(params).unwrap();
       if (response.success) {
         clearCart();
-        dispatch(incrementCartCount());
+        dispatch(
+          incrementCartCount(),
+          showToast({
+            message: productLocalization.submitPacketSuccess,
+            severity: ToastSeverity.success,
+          }),
+        );
       }
     } catch (_) {
       dispatch(
@@ -48,6 +54,7 @@ export default function Cart() {
       );
     }
   };
+
   return (
     <Box className='sticky top-6 flex h-fit w-[466px] flex-col gap-8 rounded-2xl bg-white p-8'>
       <Box className='flex flex-col gap-6'>

@@ -19,7 +19,7 @@ export default function Profile() {
       <Box className='relative'>
         <Image src={shoppingCart} alt={localization.shoopingCart} width={24} height={24} />
         {!!cartCount && (
-          <Box className='absolute -top-1 -right-1.5 h-4 w-4 rounded-2xl bg-black'>
+          <Box className='absolute -top-1 -right-1.5 h-4 w-4 min-w-fit rounded-2xl bg-black'>
             <Typography className='text-center !text-[12px] leading-3 !text-white'>
               {cartCount}
             </Typography>
