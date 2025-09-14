@@ -33,8 +33,12 @@ export const CartContextProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const deleteItemsFromCart = (ids: string[]) => {
+    setCart((prev) => prev.filter((item) => !ids.includes(item._id)));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, deleteItemsFromCart }}>
       {children}
     </CartContext.Provider>
   );

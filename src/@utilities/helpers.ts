@@ -18,3 +18,7 @@ export function productTypeIconMapper(type: keyof typeof ProductType) {
 export function cn(...inputs: any[]) {
   return twMerge(clsx(inputs));
 }
+
+export function formatPrice(value: number): string {
+  return new Intl.NumberFormat('en-US').format(value);
+}

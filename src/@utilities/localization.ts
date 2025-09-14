@@ -11,6 +11,8 @@ export const localization = {
   visa: 'visa',
   masterCart: 'master cart',
   guide: 'rehber',
+  delete: 'silmek',
+  priceInLira: (price: number | string) => `${price}₺`,
   menuItems: {
     allProducts: 'Tüm Ürünler',
     aboutUs: 'Biz Kimiz?',

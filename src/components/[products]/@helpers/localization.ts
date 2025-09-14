@@ -9,4 +9,9 @@ export const productLocalization = {
     'Döngüleri yoğun geçen kullanıcıların çoğu günde 3 adet standart ped tercih ediyor.',
   padGuide:
     'Kullanıcılarımızın %68’i akıntıları olan günlerde Standart Günlük Pedi, regl dönemlerinin son günlerinde veya daha yoğun akıntıları olan günlerde ise Süper Günlük Ped’i tercih ediyor.',
+  packet: 'Paketin',
+  packetLabel: '2 Ayda bir gönderim',
+  packetDescription:
+    'Kişisel ihtiyacına yönelik istediğin miktarda ped, günlük ped, tampon veya destekleyici ürünler ekleyerek kendine özel paket oluşturabilirsin.',
+  addToCart: (totalPrice: string) => `Sepete Ekle (${totalPrice}₺)`,
 };
