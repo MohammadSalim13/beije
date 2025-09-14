@@ -56,7 +56,7 @@ export default function Cart() {
   };
 
   return (
-    <Box className='sticky top-6 flex h-fit w-[466px] flex-col gap-8 rounded-2xl bg-white p-8'>
+    <Box className='bottom-0 flex h-fit flex-col gap-8 rounded-2xl bg-white p-8 md:sticky md:top-6 md:w-[466px]'>
       <Box className='flex flex-col gap-6'>
         <Box className='flex items-center justify-between'>
           <Typography className='!text-[24px] !font-medium'>

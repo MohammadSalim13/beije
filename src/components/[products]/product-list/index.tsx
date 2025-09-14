@@ -17,7 +17,7 @@ export default function ProductList() {
   const list = data?.products.filter((product) => product.type === type) || [];
 
   return (
-    <Box className='flex max-w-141 flex-col gap-8'>
+    <Box className='flex max-w-141 flex-col gap-8 px-4 md:px-0'>
       <Box className='flex flex-col gap-6'>
         <Box className='flex items-center justify-between gap-6'>
           <Typography className='!text-[24px] !font-medium'>
