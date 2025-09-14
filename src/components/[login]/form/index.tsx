@@ -3,18 +3,17 @@ import { Box, Button, Divider, Typography } from '@mui/material';
 import { Form as FormikForm, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import { LOGIN_VALIDATION_SCHEMA } from '@/components/login/@helpers/constant';
-import { loginLocalization } from '@/components/login/@helpers/localization';
-import Inputs from '@/components/login/form/inputs';
-import SSO from '@/components/login/form/sso';
+import { setUserToken } from '@/components/[login]/@helpers';
+import { LOGIN_VALIDATION_SCHEMA } from '@/components/[login]/@helpers/constant';
+import { loginLocalization } from '@/components/[login]/@helpers/localization';
+import Inputs from '@/components/[login]/form/inputs';
+import SSO from '@/components/[login]/form/sso';
 
 import { AppDispatch } from '@/store';
 import { useGetUserProfileQuery, usePostUserLoginMutation } from '@/store/services/user/api';
 import { SignInBody } from '@/store/services/user/type';
 import { showToast } from '@/store/slices/toast';
 import { ToastSeverity } from '@/store/slices/toast/type';
-
-import { setUserToken } from '../@helpers';
 
 export default function Form() {
   const dispatch = useDispatch<AppDispatch>();

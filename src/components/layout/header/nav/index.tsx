@@ -34,7 +34,7 @@ export default function Nav() {
       </Box>
       <SwipeableDrawer
         anchor='top'
-        className='bg-transparent px-4'
+        className='px-4'
         open={isOpen}
         ModalProps={{ keepMounted: true }}
         onClose={() => setIsOpen(false)}
@@ -49,6 +49,7 @@ export default function Nav() {
           paper: {
             sx: {
               top: 94,
+              backgroundColor: '#F7F6F5',
             },
           },
           backdrop: {

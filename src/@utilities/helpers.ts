@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 import { ProductType } from '@/store/services/products/type';
 
 import menstrualIcon from '~/icon/product-menstrual.svg';
@@ -10,4 +13,12 @@ export function productTypeIconMapper(type: keyof typeof ProductType) {
     default:
       return otherIcon;
   }
+}
+
+export function cn(...inputs: any[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function formatPrice(value: number): string {
+  return new Intl.NumberFormat('en-US').format(value);
 }

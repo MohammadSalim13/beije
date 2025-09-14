@@ -1,11 +1,11 @@
 import { Box, Button, styled, TextField } from '@mui/material';
 import { useFormikContext } from 'formik';
 
-import { loginLocalization } from '@/components/login/@helpers/localization';
-import { FormValues } from '@/components/login/form/type';
+import { loginLocalization } from '@/components/[login]/@helpers/localization';
+import { FormValues } from '@/components/[login]/form/type';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
-  backgroundColor: 'white',
+  backgroundColor: '#F7F6F5',
   borderRadius: 8,
   '& .MuiOutlinedInput-root': {
     margin: 0,

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
 
-import Form from '@/components/login/form';
+import Form from '@/components/[login]/form';
 
 import { localization } from '@/@utilities/localization';
 

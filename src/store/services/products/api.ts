@@ -1,6 +1,11 @@
-import { GET_PACKETS_AND_PRODUCTS } from '@/store/services/api-routes';
+import {
+  GET_PACKETS_AND_PRODUCTS,
+  POST_VERIFY_PACKET_PRICE,
+} from '@/store/services/api-routes';
 import { baseApi } from '@/store/services/baseApi';
-import { ProductAndPackets } from '@/store/services/products/type';
+import { ProductAndPackets, VerifyPriceBody } from '@/store/services/products/type';
+
+import { BaseResponse } from '@/models/_base';
 
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,8 +16,15 @@ export const productsApi = baseApi.injectEndpoints({
         return response.data;
       },
     }),
+    postVerifyPrice: builder.mutation<BaseResponse, VerifyPriceBody>({
+      query: (bodyParams) => ({
+        url: POST_VERIFY_PACKET_PRICE,
+        method: 'POST',
+        body: bodyParams,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProductsAndPacketsQuery } = productsApi;
+export const { useGetProductsAndPacketsQuery, usePostVerifyPriceMutation } = productsApi;

@@ -1,3 +1,5 @@
+import { CartItem } from '@/components/[products]/@helpers/hooks/use-cart-context/type';
+
 export const ProductType = {
   Menstrual: 'Menstrual',
   Other: 'Other',
@@ -26,4 +28,9 @@ export interface Packet {
 export interface ProductAndPackets {
   products: Product[];
   packets: Packet[];
+}
+
+export interface VerifyPriceBody {
+  packet: CartItem[];
+  totalPrice: number;
 }

@@ -39,7 +39,10 @@ export const baseApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_API_URL || '',
     prepareHeaders: (headers) => {
       const token = Cookies.get(STORAGE_KEYS.TOKEN);
-      if (token) headers.set('Authorization', `Bearer ${token}`);
+      if (token) {
+        // headers.set('x-auth-token', token);
+        headers.set('Authorization', `Bearer ${token}`);
+      }
       return headers;
     },
   }),

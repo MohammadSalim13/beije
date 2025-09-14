@@ -1,4 +1,4 @@
-import LoginComponent from '@/components/login';
+import LoginComponent from '@/components/[login]';
 
 // meta data can be added here
 
