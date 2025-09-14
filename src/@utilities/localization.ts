@@ -10,6 +10,7 @@ export const localization = {
   submit: 'Gönder',
   visa: 'visa',
   masterCart: 'master cart',
+  guide: 'rehber',
   menuItems: {
     allProducts: 'Tüm Ürünler',
     aboutUs: 'Biz Kimiz?',

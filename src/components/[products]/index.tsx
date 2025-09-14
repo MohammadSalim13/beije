@@ -8,7 +8,7 @@ import ProductList from '@/components/[products]/product-list';
 export default function Products() {
   return (
     <CartContextProvider>
-      <Box className='max-w-large mx-auto mb-6 flex justify-between'>
+      <Box className='max-w-large mx-auto my-10 flex justify-between gap-4'>
         <ProductList />
         <Cart />
       </Box>
