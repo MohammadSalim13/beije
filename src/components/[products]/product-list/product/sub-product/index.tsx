@@ -4,7 +4,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { useCartContext } from '@/components/[products]/@helpers/hooks/use-cart-context';
 import Props from '@/components/[products]/product-list/product/sub-product/type';
 
-export default function SubProduct({ _id, name, price }: Props) {
+export default function SubProduct({ _id, name }: Props) {
   const { cart, addToCart, removeFromCart } = useCartContext();
 
   const count = cart.find((item) => item._id === _id)?.count || 0;
