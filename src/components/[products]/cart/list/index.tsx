@@ -18,7 +18,6 @@ import trash from '~/icon/trash.svg';
 export default function List() {
   const { data } = useGetProductsAndPacketsQuery();
   const { cart, deleteItemsFromCart } = useCartContext();
-  const cartIds = new Set(cart.map((item) => item._id));
   const productsList = getProductsExitsInCart(cart, data?.products);
   const deleteProduct = (product: Product) => {
     const subIds = product.subProducts.map((subProduct) => subProduct._id);

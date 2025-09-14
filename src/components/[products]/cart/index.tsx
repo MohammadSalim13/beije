@@ -1,20 +1,53 @@
 'use client';
 import { Box, Button, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
 import { calcTotalPrice } from '@/components/[products]/@helpers';
 import { useCartContext } from '@/components/[products]/@helpers/hooks/use-cart-context';
 import { productLocalization } from '@/components/[products]/@helpers/localization';
 import List from '@/components/[products]/cart/list';
 
-import { useGetProductsAndPacketsQuery } from '@/store/services/products/api';
+import { AppDispatch } from '@/store';
+import {
+  useGetProductsAndPacketsQuery,
+  usePostVerifyPriceMutation,
+} from '@/store/services/products/api';
+import { incrementCartCount } from '@/store/slices/global';
+import { showToast } from '@/store/slices/toast';
+import { ToastSeverity } from '@/store/slices/toast/type';
 
 import { formatPrice } from '@/@utilities/helpers';
 
 export default function Cart() {
-  const { cart } = useCartContext();
+  const { cart, clearCart } = useCartContext();
   const { data } = useGetProductsAndPacketsQuery();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const [postVerifyPrice, { isLoading }] = usePostVerifyPriceMutation();
 
   const isDisable = cart.length === 0;
+  const totalPrice = calcTotalPrice(data?.products, cart);
+
+  const handleVerify = async () => {
+    const params = {
+      packet: cart,
+      totalPrice,
+    };
+    try {
+      const response = await postVerifyPrice(params).unwrap();
+      if (response.success) {
+        clearCart();
+        dispatch(incrementCartCount());
+      }
+    } catch (_) {
+      dispatch(
+        showToast({
+          message: productLocalization.submitPacketError,
+          severity: ToastSeverity.error,
+        }),
+      );
+    }
+  };
   return (
     <Box className='sticky top-6 flex h-fit w-[466px] flex-col gap-8 rounded-2xl bg-white p-8'>
       <Box className='flex flex-col gap-6'>
@@ -36,7 +69,7 @@ export default function Cart() {
         type='submit'
         variant='contained'
         size='large'
-        // loading={isLoading}
+        loading={isLoading}
         disabled={isDisable}
         sx={{
           backgroundColor: '#343131',
@@ -47,8 +80,9 @@ export default function Cart() {
             backgroundColor: '#222',
           },
         }}
+        onClick={handleVerify}
       >
-        {productLocalization.addToCart(formatPrice(calcTotalPrice(data?.products, cart)))}
+        {productLocalization.addToCart(formatPrice(totalPrice))}
       </Button>
     </Box>
   );

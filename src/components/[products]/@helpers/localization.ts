@@ -13,5 +13,6 @@ export const productLocalization = {
   packetLabel: '2 Ayda bir gönderim',
   packetDescription:
     'Kişisel ihtiyacına yönelik istediğin miktarda ped, günlük ped, tampon veya destekleyici ürünler ekleyerek kendine özel paket oluşturabilirsin.',
+  submitPacketError: 'paket fiyatı gönderilirken bir sorun oluştu',
   addToCart: (totalPrice: string) => `Sepete Ekle (${totalPrice}₺)`,
 };
