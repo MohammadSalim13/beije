@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { footerLinks } from '@/components/layout/@helpers/constants';
 
+import { cn } from '@/@utilities/helpers';
+
 export default function Links() {
   const hasIcon = (
     items: {
@@ -19,16 +21,17 @@ export default function Links() {
       {footerLinks.map((cols, index) => (
         <Box
           key={`col${index}`}
-          className={
+          className={cn(
+            'flex',
             hasIcon(cols)
-              ? 'col-span-2 flex justify-between p-5 md:col-span-1 md:flex-col md:justify-start md:gap-4 md:p-0'
-              : 'flex grow flex-col gap-4'
-          }
+              ? 'col-span-2 justify-between p-5 md:col-span-1 md:flex-col md:justify-start md:gap-4 md:p-0'
+              : 'grow flex-col gap-4',
+          )}
         >
           {cols.map((item) => (
             <Box key={item.id} className='flex cursor-pointer gap-2'>
               {item?.icon && <Image src={item.icon} alt={item.label} width={24} height={24} />}
-              <Typography className={!!item?.icon ? 'hidden md:block' : ''}>
+              <Typography className={cn(item?.icon && 'hidden md:block')}>
                 {item.label}
               </Typography>
             </Box>
