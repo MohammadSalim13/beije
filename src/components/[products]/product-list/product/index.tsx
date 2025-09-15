@@ -1,10 +1,10 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Collapse, IconButton, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Collapse, IconButton, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 
 import { getProductGuid } from '@/components/[products]/@helpers';
+import Skeleton from '@/components/[products]/product-list/product/skeleton';
 import SubProduct from '@/components/[products]/product-list/product/sub-product';
 import Props from '@/components/[products]/product-list/product/type';
 
@@ -49,5 +49,7 @@ export default function Product({ index, title, subProducts }: Props) {
     </Box>
   );
 }
+
+export { Skeleton };
 
 // Icons are ignored here because there are many variants;

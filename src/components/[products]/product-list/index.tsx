@@ -4,15 +4,15 @@ import { useState } from 'react';
 
 import { PRODUCT_TAPS } from '@/components/[products]/@helpers/constants';
 import { productLocalization } from '@/components/[products]/@helpers/localization';
-import Product from '@/components/[products]/product-list/product';
+import Product, { Skeleton } from '@/components/[products]/product-list/product';
 
 import { useGetProductsAndPacketsQuery } from '@/store/services/products/api';
 import { ProductType } from '@/store/services/products/type';
 
-import { cn } from '@/@utilities/helpers';
+import { cn, generateFixList } from '@/@utilities/helpers';
 
 export default function ProductList() {
-  const { data } = useGetProductsAndPacketsQuery();
+  const { data, isLoading } = useGetProductsAndPacketsQuery();
   const [type, setType] = useState<keyof typeof ProductType>(ProductType.Menstrual);
   const list = data?.products.filter((product) => product.type === type) || [];
 
@@ -61,9 +61,11 @@ export default function ProductList() {
           </Box>
         ))}
       </Box>
-      {list.map((product, index) => (
-        <Product key={product._id} index={index} {...product} />
-      ))}
+      {isLoading
+        ? generateFixList(3).map((id) => <Skeleton key={id} />)
+        : list.map((product, index) => (
+            <Product key={product._id} index={index} {...product} />
+          ))}
     </Box>
   );
 }

@@ -22,3 +22,7 @@ export function cn(...inputs: any[]) {
 export function formatPrice(value: number): string {
   return new Intl.NumberFormat('en-US').format(value);
 }
+
+export function generateFixList(length: number, prefix = '') {
+  return Array.from({ length }, (_, index) => `${prefix}${index}`);
+}
