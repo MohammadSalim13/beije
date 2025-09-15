@@ -18,8 +18,7 @@ import { ToastSeverity } from '@/store/slices/toast/type';
 export default function Form() {
   const dispatch = useDispatch<AppDispatch>();
   const [postUserLogin, { isLoading }] = usePostUserLoginMutation();
-  // const { data, refetch } = useGetUserProfileQuery();
-  const { refetch } = useGetUserProfileQuery();
+  const { data, refetch } = useGetUserProfileQuery();
   const handleSubmit = async (values: SignInBody) => {
     try {
       const response = await postUserLogin(values).unwrap();
@@ -39,7 +38,7 @@ export default function Form() {
       );
     }
   };
-  // profile query commented out due to an issue that always response even with out cookie or other credentials
+
   return (
     <Box className='flex w-full justify-center px-4 py-8 pb-16 md:w-1/2 md:py-24'>
       <Box className='flex w-full max-w-108 flex-col gap-6'>
@@ -53,41 +52,41 @@ export default function Form() {
           <SSO />
           <Divider />
         </Box>
-        {/* {data?._id ? (
+        {data?._id ? (
           <Box>
             <Typography className='text-center'>
               {loginLocalization.loggedInAs(data.profileInfo.firstName)}
             </Typography>
           </Box>
-        ) : ( */}
-        <Formik
-          validateOnChange={false}
-          initialValues={{ email: '', password: '' }}
-          validationSchema={LOGIN_VALIDATION_SCHEMA}
-          onSubmit={handleSubmit}
-        >
-          <FormikForm className='flex flex-col gap-6'>
-            <Inputs />
-            <Button
-              type='submit'
-              variant='contained'
-              size='large'
-              loading={isLoading}
-              sx={{
-                backgroundColor: '#343131',
-                color: 'white',
-                height: '50px',
-                borderRadius: '28px',
-                '&:hover': {
-                  backgroundColor: '#222',
-                },
-              }}
-            >
-              {loginLocalization.login}
-            </Button>
-          </FormikForm>
-        </Formik>
-        {/* )} */}
+        ) : (
+          <Formik
+            validateOnChange={false}
+            initialValues={{ email: '', password: '' }}
+            validationSchema={LOGIN_VALIDATION_SCHEMA}
+            onSubmit={handleSubmit}
+          >
+            <FormikForm className='flex flex-col gap-6'>
+              <Inputs />
+              <Button
+                type='submit'
+                variant='contained'
+                size='large'
+                loading={isLoading}
+                sx={{
+                  backgroundColor: '#343131',
+                  color: 'white',
+                  height: '50px',
+                  borderRadius: '28px',
+                  '&:hover': {
+                    backgroundColor: '#222',
+                  },
+                }}
+              >
+                {loginLocalization.login}
+              </Button>
+            </FormikForm>
+          </Formik>
+        )}
       </Box>
     </Box>
   );
