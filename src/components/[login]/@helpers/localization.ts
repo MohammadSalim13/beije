@@ -2,6 +2,7 @@ export const loginLocalization = {
   hello: 'Merhaba',
   welcome: "beije'e hoş geldin!",
   login: 'Giriş Yap',
+  logout: 'çıkış yap',
   signup: 'Üye Ol',
   googleLogin: 'Google ile Giriş Yap',
   facebookLogin: 'Facebook ile Giriş Yap',

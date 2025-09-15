@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
+import { useGetUserProfileQuery } from '@/store/services/user/api';
 import { selectCartCount } from '@/store/slices/global';
 
 import { localization } from '@/@utilities/localization';
@@ -12,6 +13,7 @@ import shoppingCart from '~/icon/cart-button.svg';
 import user from '~/icon/user.svg';
 
 export default function Profile() {
+  useGetUserProfileQuery();
   const cartCount = useSelector(selectCartCount);
 
   return (

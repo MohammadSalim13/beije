@@ -2,6 +2,7 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
+import Skeleton from '@/components/@shared/product-card/skeleton';
 import Props from '@/components/@shared/product-card/type';
 
 import { productTypeIconMapper } from '@/@utilities/helpers';
@@ -27,5 +28,7 @@ export default function ProductCard({ title, image, type }: Props) {
     </Box>
   );
 }
+
+export { Skeleton };
 
 // this component is assumed to be used multiple times inside project
