@@ -2,17 +2,18 @@
 import { Box, SwipeableDrawer } from '@mui/material';
 import { useState } from 'react';
 
-import ProductCard from '@/components/@shared/product-card';
+import ProductCard, { Skeleton } from '@/components/@shared/product-card';
 import ProductContainer from '@/components/@shared/product-container';
 import { HEADER_NAV_ITEMS } from '@/components/layout/@helpers/constants';
 import Item from '@/components/layout/header/nav/item';
 
 import { useGetProductsAndPacketsQuery } from '@/store/services/products/api';
 
+import { generateFixList } from '@/@utilities/helpers';
 import { localization } from '@/@utilities/localization';
 
 export default function Nav() {
-  const { data } = useGetProductsAndPacketsQuery();
+  const { data, isLoading } = useGetProductsAndPacketsQuery();
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = (index: number) => {
     // hear we can set the drawer content based on the item hovered
@@ -62,13 +63,19 @@ export default function Nav() {
       >
         <Box className='max-w-large mx-auto flex min-h-40 w-full flex-col gap-10 pb-16'>
           <ProductContainer title={localization.products}>
-            {data?.products.map((product) => <ProductCard key={product._id} {...product} />)}
+            {isLoading
+              ? generateFixList(6).map((id) => <Skeleton key={id} />)
+              : data?.products.map((product) => (
+                  <ProductCard key={product._id} {...product} />
+                ))}
           </ProductContainer>
           <ProductContainer
             title={localization.packets}
             continueLabel={localization.allPackets}
           >
-            {data?.packets.map((packet) => <ProductCard key={packet._id} {...packet} />)}
+            {isLoading
+              ? generateFixList(4).map((id) => <Skeleton key={id} />)
+              : data?.packets.map((packet) => <ProductCard key={packet._id} {...packet} />)}
           </ProductContainer>
         </Box>
       </SwipeableDrawer>
