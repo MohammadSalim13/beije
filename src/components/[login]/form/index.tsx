@@ -1,9 +1,9 @@
 'use client';
-import { Box, Button, Divider, Typography } from '@mui/material';
+import { Box, Button as BaseButton, Divider, styled, Typography } from '@mui/material';
 import { Form as FormikForm, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import { setUserToken } from '@/components/[login]/@helpers';
+import { logoutUser, setUserToken } from '@/components/[login]/@helpers';
 import { LOGIN_VALIDATION_SCHEMA } from '@/components/[login]/@helpers/constant';
 import { loginLocalization } from '@/components/[login]/@helpers/localization';
 import Inputs from '@/components/[login]/form/inputs';
@@ -14,6 +14,18 @@ import { useGetUserProfileQuery, usePostUserLoginMutation } from '@/store/servic
 import { SignInBody } from '@/store/services/user/type';
 import { showToast } from '@/store/slices/toast';
 import { ToastSeverity } from '@/store/slices/toast/type';
+
+const Button = styled(BaseButton)(() => ({
+  backgroundColor: '#343131',
+  color: '#fff',
+  height: '50px',
+  borderRadius: '28px',
+  textTransform: 'none',
+  fontWeight: 500,
+  '&:hover': {
+    backgroundColor: '#222',
+  },
+}));
 
 export default function Form() {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,6 +50,10 @@ export default function Form() {
       );
     }
   };
+  const handleLogout = () => {
+    logoutUser();
+    window.location.reload();
+  };
 
   return (
     <Box className='flex w-full justify-center px-4 py-8 pb-16 md:w-1/2 md:py-24'>
@@ -53,10 +69,13 @@ export default function Form() {
           <Divider />
         </Box>
         {data?._id ? (
-          <Box>
+          <Box className='flex w-full flex-col gap-6'>
             <Typography className='text-center'>
               {loginLocalization.loggedInAs(data.profileInfo.firstName)}
             </Typography>
+            <Button size='large' variant='contained' onClick={handleLogout}>
+              {loginLocalization.logout}
+            </Button>
           </Box>
         ) : (
           <Formik
@@ -67,21 +86,7 @@ export default function Form() {
           >
             <FormikForm className='flex flex-col gap-6'>
               <Inputs />
-              <Button
-                type='submit'
-                variant='contained'
-                size='large'
-                loading={isLoading}
-                sx={{
-                  backgroundColor: '#343131',
-                  color: 'white',
-                  height: '50px',
-                  borderRadius: '28px',
-                  '&:hover': {
-                    backgroundColor: '#222',
-                  },
-                }}
-              >
+              <Button type='submit' variant='contained' size='large' loading={isLoading}>
                 {loginLocalization.login}
               </Button>
             </FormikForm>
