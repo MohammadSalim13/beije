@@ -30,7 +30,10 @@ export default function List() {
   return (
     <Box className='flex flex-col gap-5'>
       {productsList.map((product) => (
-        <Box className='flex flex-col gap-5 rounded-lg border border-[#3429291F] p-4'>
+        <Box
+          key={product._id}
+          className='flex flex-col gap-5 rounded-lg border border-[#3429291F] p-4'
+        >
           <Box className='flex items-center justify-between'>
             <Typography className='!text-[18px] !font-medium'>{product.title}</Typography>
             <IconButton
@@ -41,7 +44,7 @@ export default function List() {
             </IconButton>
           </Box>
           {getSubProductsInCart(product, cart).map((subProduct) => (
-            <Box className='flex items-center justify-between'>
+            <Box key={subProduct._id} className='flex items-center justify-between'>
               <Typography>{`${subProduct.count} ${subProduct.name}`}</Typography>
               <Typography>
                 {localization.priceInLira(formatPrice(subProduct.count * subProduct.price))}
